@@ -19,22 +19,22 @@ function getResult(a,b,c){
 
 function getAverageMark(marks = []){
     let averageMark = 0;
-        sum = 0;
-    if (marks.length == 0) {
-        return 0;
-    } else if (marks.length <= 5) {
-        marks.forEach(function(value) {
-          sum += value; 
-        });
-        averageMark = sum / marks.length;
-    } else {
-        console.log("Всего оценок: " + marks.length);
-        let test = marks.slice(0, 5);
-        test.forEach(function(value) {
-            sum += value; 
-          });
-          averageMark = sum / test.length;
-    }
+    sum = array => {
+       let sum = 0
+       array.forEach(function (value) {
+           sum += value;
+       });
+       return sum
+   }
+   if (marks.length == 0) {
+       return 0;
+   } else if (marks.length <= 5) {
+       averageMark = sum(marks) / marks.length
+   } else {
+       console.log("Всего оценок: " + marks.length);
+       let sliceArray = marks.slice(0, 5);
+       averageMark = sum(sliceArray) / sliceArray.length;
+   }
    
     return averageMark;
  }

@@ -1,12 +1,11 @@
 "use strict";
 
-const obj = {
-    d: Number,
-    roots: []
-}
 function getSolutions(a, b, c) {
-    let D = Math.pow(b, 2) - 4 * a * c;
-  obj.d = D
+    const D = Math.pow(b, 2) - 4 * a * c;
+    const obj = {
+        D,
+        roots: []
+}
     if (D > 0) {
         let x1 = (- b + Math.sqrt(D)) / (2 * a);
         let x2 = (- b - Math.sqrt(D)) / (2 * a);
@@ -14,25 +13,19 @@ function getSolutions(a, b, c) {
      } else if (D == 0) {
         let x1 = - b / (2 * a);
         obj.roots.push(x1);
-     } else {
-        return obj;
-     }
+     } 
      
     return obj;
 }
 
-
 function showSolutionsMessage(a, b, c) {
-    getSolutions(a, b, c);
-    console.log(obj.roots)
-    let result = obj;
-    let x = obj.roots;
-    
+    let result = getSolutions(a, b, c);
+        
     console.log (`Вычисляем корни квадратного уравнения ${a} * x**2 + ${b} * x + ${c}`);
-    console.log(`Значение дискриминанта: ${result.d}`);
-    if (result.d > 0) {
+    console.log(`Значение дискриминанта: ${result.D}`);
+    if (result.D > 0) {
         console.log(`Уравнение имеет два корня. X₁ = ${result.roots[0]}, X₂ = ${result.roots[1]}`)
-     } else if (result.d == 0) {
+     } else if (result.D == 0) {
         console.log(`Уравнение имеет один корень X₁ = ${result.roots}`)
      } else {
         console.log(`Уравнение не имеет вещественных корней`)
@@ -40,3 +33,35 @@ function showSolutionsMessage(a, b, c) {
      
 }
 showSolutionsMessage(7,20,-3)
+
+// Задача 2
+
+const data = {
+    algebra: [3,2,4],
+    russian: [5,3]
+}
+function getAverageScore(data) {
+    const result = {};
+    for (let discipline in data) {
+        result[discipline] = getAverageMark(data[discipline]);
+    }
+    return result;
+}
+function getAverageMark(marks){
+    let averageMark = 0;
+    sum = array => {
+       let sum = 0
+       array.forEach(function (value) {
+           sum += value;
+       });
+       return sum
+   }
+   if (marks.length == 0) {
+       return 0;
+   } else if (marks.length <= 5) {
+       averageMark = sum(marks) / marks.length
+   }
+    return averageMark;
+ }
+const result = getAverageScore(data);
+console.log(result);

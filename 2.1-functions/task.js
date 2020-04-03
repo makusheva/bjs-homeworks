@@ -37,31 +37,60 @@ showSolutionsMessage(7,20,-3)
 // Задача 2
 
 const data = {
-    algebra: [3,2,4],
-    russian: [5,3]
+  algebra: [1,2,3],
+  russian: [5,6],
+  english: []
 }
 function getAverageScore(data) {
-    const result = {};
-    for (let discipline in data) {
-        result[discipline] = getAverageMark(data[discipline]);
-    }
-    return result;
+  const result = {};
+  let sumResult = 0;
+  let count = 0;
+  const average = {};
+  for (let discipline in data) {
+      result[discipline] = getAverageMark(data[discipline]);
+      sumResult += result[discipline];
+      count++;
+      result.average = sumResult / count;
+  }
+  // if(!result.length){
+  //   return result.average = 0;
+  // }
+   return result;
 }
+
+
 function getAverageMark(marks){
-    let averageMark = 0;
-    sum = array => {
-       let sum = 0
-       array.forEach(function (value) {
-           sum += value;
-       });
-       return sum
-   }
-   if (marks.length == 0) {
-       return 0;
-   } else if (marks.length <= 5) {
-       averageMark = sum(marks) / marks.length
-   }
-    return averageMark;
+  let averageMark = 0;
+  const sum = array => {
+     let sum = 0
+     array.forEach(function (value) {
+         sum += value;
+     });
+     return sum
  }
+ if (marks.length == 0) {
+     return 0;
+ } else {
+     averageMark = sum(marks) / marks.length
+ }
+  return averageMark;
+}
+
 const result = getAverageScore(data);
 console.log(result);
+
+// Задача 3
+function getPersonData(secretData) {
+  let firstName = getDecodedValue(secretData.aaa);
+  let lastName = getDecodedValue(secretData.bbb);
+  return {firstName, lastName};
+}
+
+function getDecodedValue(secret) {
+  if (secret == 1) {
+    return "Эмильо";
+  } else {
+    return "Родриго";
+  }
+} 
+console.log (getPersonData({aaa:0, bbb:0}))

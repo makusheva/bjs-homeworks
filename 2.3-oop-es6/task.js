@@ -18,13 +18,12 @@ class Weapon {
     }
     getDamage() {
         if (this.durability >= 0.3 * this.startDurability){
-            this.attack;
+            return this.attack;
         } else if (this.durability === 0) {
-            this.attack = 0;
+            return 0;
         } else {
-            this.attack = this.attack / 2;
+            return this.attack / 2;
         }
-        return this.attack
     }
     isBroken() {
         if (this.durability > 0) {
@@ -191,28 +190,28 @@ console.log(stormStaff2.range); // 3
 
 // Задача 3
 
-// class StudentLog {
+class StudentLog {
 
-//     constructor( name = String, ){
-//         this.name = name
-//         this.subjectArr = []
-//     }
+    constructor( name = String, ){
+        this.name = name
+        this.subjectArr = []
+    }
 
 
-//     getName(){
-//         return this.name
-//     }
+    getName(){
+        return this.name
+    }
 
-//     addGrade( grade = Number, subject = String ){
-//         const newSubj = {}
-//         if(Number.isInteger(grade) && typeof subject === 'string' && grade< 5){
-//                 newSubj.grade = grade
-//                 newSubj.subject = subject
-//             this.subjectArr.push(newSubj)
-//         } else{
-//             return `Вы пытались поставить оценку ${grade} по предмету "${subject}". Допускаются только числа от 1 до 5.`
-//         }
-//         return newSubj
-//     }
+    addGrade( grade = Number, subject = String ){
+        const newSubj = {}
+        if(Number.isInteger(grade) && typeof subject === 'string' && grade< 5){
+                newSubj.grade = grade
+                newSubj.subject = subject
+            this.subjectArr.push(newSubj)
+        } else{
+            return `Вы пытались поставить оценку ${grade} по предмету "${subject}". Допускаются только числа от 1 до 5.`
+        }
+        return newSubj
+    }
 
-// }
+}
